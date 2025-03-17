@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/frais",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Frais\\": "",
+            "Modules\\Frais\\App\\": "app/",
+            "Modules\\Frais\\Database\\Factories\\": "database/factories/",
+            "Modules\\Frais\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Frais\\Tests\\": "tests/"
+        }
+    }
+}

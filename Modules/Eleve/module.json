@@ -1,0 +1,11 @@
+{
+    "name": "Eleve",
+    "alias": "eleve",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Eleve\\App\\Providers\\EleveServiceProvider"
+    ],
+    "files": []
+}

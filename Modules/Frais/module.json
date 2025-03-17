@@ -1,0 +1,11 @@
+{
+    "name": "Frais",
+    "alias": "frais",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Frais\\App\\Providers\\FraisServiceProvider"
+    ],
+    "files": []
+}

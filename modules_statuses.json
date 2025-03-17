@@ -1,0 +1,9 @@
+{
+    "Auth": true,
+    "Eleve": true,
+    "Personnel": true,
+    "Frais": true,
+    "Presence": true,
+    "Bibliotheque": true,
+    "Cotation": true
+}

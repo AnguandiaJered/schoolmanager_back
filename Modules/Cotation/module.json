@@ -1,0 +1,11 @@
+{
+    "name": "Cotation",
+    "alias": "cotation",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Cotation\\App\\Providers\\CotationServiceProvider"
+    ],
+    "files": []
+}

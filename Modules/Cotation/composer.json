@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/cotation",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Cotation\\": "",
+            "Modules\\Cotation\\App\\": "app/",
+            "Modules\\Cotation\\Database\\Factories\\": "database/factories/",
+            "Modules\\Cotation\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Cotation\\Tests\\": "tests/"
+        }
+    }
+}
