@@ -11,6 +11,7 @@ class RouteServiceProvider extends ServiceProvider
      * The module namespace to assume when generating URLs to actions.
      */
     protected string $moduleNamespace = 'Modules\Presence\App\Http\Controllers';
+    protected string $moduleNamespaceV1 = 'Modules\Presence\App\Http\Controllers\Api\V1';
 
     /**
      * Called before routes are registered.
@@ -55,5 +56,10 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('api')
             ->namespace($this->moduleNamespace)
             ->group(module_path('Presence', '/routes/api.php'));
+
+        Route::prefix('api/v1')
+            ->middleware('api')
+            ->namespace($this->moduleNamespaceV1)
+            ->group(module_path('Presence', '/routes/apiV1.php'));
     }
 }
