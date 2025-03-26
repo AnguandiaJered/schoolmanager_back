@@ -34,7 +34,7 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $data = $request->validate(['name' =>['required']]);
         Role::create($data);
@@ -62,7 +62,7 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, $id)
     {
         $request->validate(['name' =>['required']]);
         $role = Role::findOrFail($id);
@@ -75,7 +75,7 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
         $role->delete();
         return $this->sendResponse($role,'Suppression de role réussi');

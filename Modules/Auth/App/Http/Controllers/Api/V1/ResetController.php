@@ -42,11 +42,11 @@ class ResetController extends Controller
         ]);
 
 
-        Mail::to($user)->send(new ResetPassword($token, '123456'));
+        Mail::to($user)->send(new ResetPassword($token, $user->otp_number));
 
-        // Mail::to($user)->queue(new ResetPassword($token, '123456'));
+        // Mail::to($user)->queue(new ResetPassword($token, $user->otp_number));
 
-        // Mail::to($user)->later(now()->addSeconds(5), new ResetPassword($token, '123456'));
+        // Mail::to($user)->later(now()->addSeconds(5), new ResetPassword($token, $user->otp_number));
 
         return $this->sendResponse($user, 'Passord Reset Email Sent ... Check Your Email');
     }
@@ -65,7 +65,7 @@ class ResetController extends Controller
             return $this->sendErrorResponse('Aucun utilisateur trouvé pour cette requette.');
         }
 
-        if ($request->input('code') == '123456') {
+        if ($request->input('code') == $user->otp_number) {
             $user->password = bcrypt($request->input('password'));
             $user->save();
 

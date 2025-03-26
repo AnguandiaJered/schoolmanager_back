@@ -9,6 +9,8 @@ use Illuminate\Http\Response;
 use App\Traits\JsonResponseTrait;
 use Illuminate\Auth\Events\Registered;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RegisterController extends Controller
 {
@@ -24,6 +26,7 @@ class RegisterController extends Controller
         ]);
 
         //code.....
+        $otpNumber=$this->generateOpt(6);
 
         // $user = User::where('phone', User::getParsedPhone('phone'))->orWhere('email', $request->input('email'))->first();
         $user = User::findForSanctum($request->input('email'));
@@ -35,6 +38,7 @@ class RegisterController extends Controller
             $user->phone = User::getParsedPhone('phone');
             $user->country_code = User::getParsedCountryCode('phone');
             $user->password = bcrypt($request->input('password'));
+            $user->otp_number = $otpNumber;
             $user->active = true;
             $user->verified = false;
             $user->save();
@@ -70,7 +74,7 @@ class RegisterController extends Controller
 
         $code = $request->input('code');
 
-        if ($code === '123456') {
+        if ($code === $user->otp_number) {
             //valider user
             $user->verified = true;
             $user->save();
@@ -79,5 +83,41 @@ class RegisterController extends Controller
         }
 
         return $this->sendErrorResponse("Le code envoyer est invalide");
+    }
+
+    public function assignRole(Request $request,User $user)
+    {
+       if($user->hasRole($request->role)){
+        return $this->sendErrorResponse('Role exists.');
+       }
+       $user->assignRole($request->role);
+       return $this->sendResponse($user,'Role assigned.');
+    }
+
+    public function removeRole(User $user, Role $role)
+    {
+       if($user->hasRole($role)){
+        $user->removeRole($role);
+        return $this->sendResponse($user,'Role removed');
+       }
+       return $this->sendErrorResponse('Role not exists');
+    }
+
+    public function givePermission(Request $request,User $user)
+    {
+       if($user->hasPermissionTo($request->permission)){
+        return $this->sendErrorResponse('Permission exists');
+       }
+       $user->givePermissionTo($request->permission);
+       return $this->sendResponse($user,'Permission added');
+    }
+
+    public function revokePermission(User $user, Permission $permission)
+    {
+       if($user->hasPermissionTo($permission)){
+        $user->revokePermissionTo($permission);
+        return $this->sendResponse($user,'Permission revoked');
+       }
+       return $this->sendErrorResponse('Permission does not exists');
     }
 }

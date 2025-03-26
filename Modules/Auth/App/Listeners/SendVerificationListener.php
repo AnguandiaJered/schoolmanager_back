@@ -24,6 +24,6 @@ class SendVerificationListener implements ShouldQueue
     {
         $user = $event->user;
 
-        Notification::send($user, new SendVerificationNotification($user->name, '123456'));
+        Notification::send($user, new SendVerificationNotification($user->name, $user->otp_number));
     }
 }

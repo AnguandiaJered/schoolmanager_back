@@ -34,7 +34,7 @@ class PermissionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $data = $request->validate(['name' =>['required']]);
         Permission::create($data);
@@ -62,7 +62,7 @@ class PermissionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, Permission $permission)
     {
         $data = $request->validate(['name' =>['required']]);
         $permission->update($data);
@@ -72,7 +72,7 @@ class PermissionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
         $permission->delete();
         return $this->sendResponse($permission,'Suppression de Permission réussi');
