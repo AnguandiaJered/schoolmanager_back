@@ -56,4 +56,37 @@ trait JsonResponseTrait
             'message' => $message,
         ];
     }
+
+    function generateOptmatricule($n)
+    {
+        $generator="1234567890AZERTYUIOPQSDFGHJKLMWXCVBN";
+        $result="";
+        for ($i=0; $i <$n ; $i++)
+        {
+          $result.=substr($generator, (rand()%(strlen($generator))),1);
+        }
+        return $result;
+    }
+
+    function generateOpt($n)
+    {
+
+     $generator="0123456789";
+     $result="";
+     for ($i=0; $i <$n ; $i++) {
+       $result.=substr($generator, (rand()%(strlen($generator))),1);
+     }
+     return $result;
+    }
+
+    // function generateOpt(limit)
+    // {
+    //     const digits = '0123456789';
+    //     let OTP = '';
+
+    //     for (let i = 0; i < limit; i++){
+    //         OTP += digits[Math.floor(Math.random() * 10)];
+    //     }
+    //     return OTP;
+    // }
 }

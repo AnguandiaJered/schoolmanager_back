@@ -29,7 +29,7 @@ class ResetController extends Controller
 
         $user = User::where('email', $email)->first();
         if (!$user) {
-            return $this->sendMessage('Email doesnt exists', 422);
+            return $this->sendMessage('Email doesn\'t exists', 422);
         }
 
         $token = Str::random(60);

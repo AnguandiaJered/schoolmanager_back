@@ -26,7 +26,7 @@ class RegisterController extends Controller
         ]);
 
         //code.....
-        $otpNumber=$this->generateOpt(6);
+        $otpNumber = $this->generateOpt(6);
 
         // $user = User::where('phone', User::getParsedPhone('phone'))->orWhere('email', $request->input('email'))->first();
         $user = User::findForSanctum($request->input('email'));
@@ -82,7 +82,7 @@ class RegisterController extends Controller
             return $this->sendResponse($user, 'Vérificiation terminer avec sucèss.');
         }
 
-        return $this->sendErrorResponse("Le code envoyer est invalide");
+        return $this->sendErrorResponse("Le code envoyer est invalide ou expiré !");
     }
 
     public function assignRole(Request $request,User $user)
