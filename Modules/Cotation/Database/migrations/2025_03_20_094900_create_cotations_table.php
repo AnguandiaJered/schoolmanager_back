@@ -13,8 +13,17 @@ return new class extends Migration
     {
         Schema::create('cotations', function (Blueprint $table) {
             $table->id();
-            
+            $table->unsignedBigInteger('eleve_id');
+            $table->unsignedBigInteger('period_id');
+            $table->unsignedBigInteger('cours_id');
+            $table->bigInteger('cote');
+            $table->unsignedBigInteger('author');
+            $table->foreign('eleve_id')->references('id')->on('eleves');
+            $table->foreign('period_id')->references('id')->on('periodes');
+            $table->foreign('cours_id')->references('id')->on('cours');
+            $table->foreign('author')->references('id')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

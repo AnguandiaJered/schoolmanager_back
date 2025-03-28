@@ -13,8 +13,15 @@ return new class extends Migration
     {
         Schema::create('presences', function (Blueprint $table) {
             $table->id();
-            
+            $table->unsignedBigInteger('eleve_id');
+            $table->string('heure_arriver');
+            $table->string('heure_sortie');
+            $table->date('datepresence');
+            $table->unsignedBigInteger('author');
+            $table->foreign('eleve_id')->references('id')->on('eleves');
+            $table->foreign('author')->references('id')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

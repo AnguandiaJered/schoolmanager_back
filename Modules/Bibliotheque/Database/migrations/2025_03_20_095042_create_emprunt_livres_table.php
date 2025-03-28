@@ -13,8 +13,15 @@ return new class extends Migration
     {
         Schema::create('emprunt_livres', function (Blueprint $table) {
             $table->id();
-            
+            $table->foreignId('eleve_id')->constrained();
+            $table->foreignId('livre_id')->constrained();
+            $table->date('dateretrait');
+            $table->date('dateretour');
+            $table->integer('nombre');
+            $table->unsignedBigInteger('author');
+            $table->foreign('author')->references('id')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

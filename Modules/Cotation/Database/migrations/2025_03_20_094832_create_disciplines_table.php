@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('disciplines', function (Blueprint $table) {
             $table->id();
-            
+            $table->string('designation');
+            $table->unsignedBigInteger('eleve_id');
+            $table->unsignedBigInteger('period_id');
+            $table->unsignedBigInteger('mention_id');
+            $table->unsignedBigInteger('author');
+            $table->foreign('eleve_id')->references('id')->on('eleves');
+            $table->foreign('period_id')->references('id')->on('periodes');
+            $table->foreign('mention_id')->references('id')->on('mensions');
+            $table->foreign('author')->references('id')->on('users');
             $table->timestamps();
         });
     }

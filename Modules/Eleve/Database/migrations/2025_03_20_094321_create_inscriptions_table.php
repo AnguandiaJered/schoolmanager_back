@@ -13,8 +13,19 @@ return new class extends Migration
     {
         Schema::create('inscriptions', function (Blueprint $table) {
             $table->id();
-            
+            $table->unsignedBigInteger('eleve_id');
+            $table->unsignedBigInteger('classe_id');
+            $table->unsignedBigInteger('annee_id');
+            $table->unsignedBigInteger('paiement_id');
+            $table->date('dateIns');
+            $table->unsignedBigInteger('author');
+            $table->foreign('eleve_id')->references('id')->on('eleves');
+            $table->foreign('classe_id')->references('id')->on('classes');
+            $table->foreign('annee_id')->references('id')->on('annees');
+            $table->foreign('paiement_id')->references('id')->on('paiements');
+            $table->foreign('author')->references('id')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('annees', function (Blueprint $table) {
             $table->id();
-            
+            $table->string('designation');
             $table->timestamps();
         });
     }

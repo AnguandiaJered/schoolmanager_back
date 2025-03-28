@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('periodes', function (Blueprint $table) {
             $table->id();
-            
+            $table->string('designation');
+            $table->date('date_debut');
+            $table->date('date_fin');
+            $table->unsignedBigInteger('author');
+            $table->foreign('author')->references('id')->on('users');
             $table->timestamps();
         });
     }
