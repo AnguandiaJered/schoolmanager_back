@@ -13,10 +13,15 @@ class Annee extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = [];
-    
+    protected $fillable = ['id','designation'];
+
     protected static function newFactory(): AnneeFactory
     {
         //return AnneeFactory::new();
+    }
+
+    public function inscription()
+    {
+        return $this->hasMany(Inscription::class, 'annee_id','id');
     }
 }

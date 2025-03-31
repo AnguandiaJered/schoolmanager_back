@@ -13,8 +13,8 @@ class Cours extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = [];
-    
+    protected $fillable = ['id','designation'];
+
     protected static function newFactory(): CoursFactory
     {
         //return CoursFactory::new();

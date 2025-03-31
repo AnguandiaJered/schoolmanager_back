@@ -13,10 +13,15 @@ class Classe extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = [];
-    
+    protected $fillable = ['id','designation'];
+
     protected static function newFactory(): ClasseFactory
     {
         //return ClasseFactory::new();
+    }
+
+    public function inscription()
+    {
+        return $this->hasMany(Inscription::class, 'classe_id','id');
     }
 }

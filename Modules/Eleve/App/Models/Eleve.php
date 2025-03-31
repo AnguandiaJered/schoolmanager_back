@@ -13,10 +13,16 @@ class Eleve extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = [];
-    
+    // protected $fillable = [];
+    protected $guarded = [];
+
     protected static function newFactory(): EleveFactory
     {
         //return EleveFactory::new();
+    }
+
+    public function inscription()
+    {
+        return $this->hasMany(Inscription::class, 'eleve_id','id');
     }
 }

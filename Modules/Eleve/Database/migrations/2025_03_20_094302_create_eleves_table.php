@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('professiontutaire');
             $table->string('phonetutaire');
             $table->string('image');
+            $table->unsignedBigInteger('author');
+            $table->foreign('author')->references('id')->on('users');
             $table->timestamps();
         });
     }

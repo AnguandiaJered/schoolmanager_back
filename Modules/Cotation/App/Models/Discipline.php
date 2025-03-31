@@ -13,8 +13,9 @@ class Discipline extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = [];
-    
+    // protected $fillable = [];
+    protected $guarded = [];
+
     protected static function newFactory(): DisciplineFactory
     {
         //return DisciplineFactory::new();

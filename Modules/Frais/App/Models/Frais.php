@@ -13,8 +13,8 @@ class Frais extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = [];
-    
+    protected $fillable = ['id','designation'];
+
     protected static function newFactory(): FraisFactory
     {
         //return FraisFactory::new();

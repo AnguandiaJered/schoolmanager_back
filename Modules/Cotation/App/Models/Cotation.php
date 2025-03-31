@@ -14,7 +14,8 @@ class Cotation extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = [];
+    // protected $fillable = [];
+    protected $guarded = [];
 
     protected static function newFactory(): CotationFactory
     {
