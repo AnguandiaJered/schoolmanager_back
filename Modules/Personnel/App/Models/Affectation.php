@@ -21,4 +21,9 @@ class Affectation extends Model
     {
         //return AffectationFactory::new();
     }
+
+    public function enseignant()
+    {
+        return $this->belongsTo(Enseignant::class,'enseignant_id','id');
+    }
 }

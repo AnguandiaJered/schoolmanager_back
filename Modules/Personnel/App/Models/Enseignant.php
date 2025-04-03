@@ -20,4 +20,9 @@ class Enseignant extends Model
     {
         //return EnseignantFactory::new();
     }
+
+    public function affectation()
+    {
+        return $this->hasMany(Affectation::class, 'enseignant_id','id');
+    }
 }

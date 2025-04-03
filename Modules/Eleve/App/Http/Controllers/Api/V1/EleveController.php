@@ -97,7 +97,6 @@ class EleveController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'matricule' => 'sometimes|string',
             'nom' => 'sometimes|string',
             'postnom' => 'sometimes|string',
             'prenom' => 'sometimes|string',
