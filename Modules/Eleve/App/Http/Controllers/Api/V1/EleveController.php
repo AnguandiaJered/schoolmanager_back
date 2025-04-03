@@ -44,9 +44,11 @@ class EleveController extends Controller
                 $new_name = time().'.'.$request->image->getClientOriginalExtension();
                 $request->image->move(public_path('/storage/eleve'), $new_name);
 
+                $matricule = $this->generateOptmatr(14);
+
                 $eleve = new Eleve();
 
-                $eleve->matricule = $request->input('matricule');
+                $eleve->matricule = $matricule;
                 $eleve->nom = $request->input('nom');
                 $eleve->postnom = $request->input('postnom');
                 $eleve->prenom = $request->input('prenom');

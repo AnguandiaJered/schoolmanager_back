@@ -57,7 +57,7 @@ trait JsonResponseTrait
         ];
     }
 
-    function generateOptmatricule($n)
+    function generateOptmatr($n)
     {
         $generator="1234567890AZERTYUIOPQSDFGHJKLMWXCVBN";
         $result="";
