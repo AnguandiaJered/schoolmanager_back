@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('classe_id');
             $table->unsignedBigInteger('annee_id');
             $table->unsignedBigInteger('paiement_id');
-            $table->timestamps('date_inscrit');
             $table->unsignedBigInteger('author');
             $table->foreign('eleve_id')->references('id')->on('eleves');
             $table->foreign('classe_id')->references('id')->on('classes');

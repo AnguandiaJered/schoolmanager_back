@@ -9,15 +9,18 @@ use Illuminate\Http\Response;
 use App\Traits\JsonResponseTrait;
 use Modules\Personnel\App\Models\Enseignant;
 use Modules\Personnel\App\Http\Requests\EnseignantRequest;
+use Illuminate\Support\Facades\Storage;
 
 class EnseignantController extends Controller
 {
+    use JsonResponseTrait;
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $enseignant =Enseignant::latest()->get();
+        $enseignant = Enseignant::latest()->get();
         return $this->sendData($enseignant);
     }
 
@@ -91,7 +94,7 @@ class EnseignantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, $id)
     {
         $request->validate([
             'noms' => 'sometimes|string',

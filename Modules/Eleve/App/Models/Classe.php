@@ -5,6 +5,7 @@ namespace Modules\Eleve\App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Eleve\Database\factories\ClasseFactory;
+use Modules\Personnel\App\Models\Affectation;
 
 class Classe extends Model
 {
@@ -23,5 +24,10 @@ class Classe extends Model
     public function inscription()
     {
         return $this->hasMany(Inscription::class, 'classe_id','id');
+    }
+
+    public function affectation()
+    {
+        return $this->hasMany(Affectation::class, 'classe_id','id');
     }
 }
