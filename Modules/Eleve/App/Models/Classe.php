@@ -16,10 +16,10 @@ class Classe extends Model
      */
     protected $fillable = ['id','designation'];
 
-    protected static function newFactory(): ClasseFactory
-    {
-        //return ClasseFactory::new();
-    }
+    // protected static function newFactory(): ClasseFactory
+    // {
+    //     //return ClasseFactory::new();
+    // }
 
     public function inscription()
     {

@@ -16,10 +16,10 @@ class Enseignant extends Model
     // protected $fillable = [];
     protected $guarded = [];
 
-    protected static function newFactory(): EnseignantFactory
-    {
-        //return EnseignantFactory::new();
-    }
+    // protected static function newFactory(): EnseignantFactory
+    // {
+    //     //return EnseignantFactory::new();
+    // }
 
     public function affectation()
     {

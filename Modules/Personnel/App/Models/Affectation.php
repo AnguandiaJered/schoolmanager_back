@@ -20,10 +20,10 @@ class Affectation extends Model
     // protected $fillable = [];
     protected $guarded = [];
 
-    protected static function newFactory(): AffectationFactory
-    {
-        //return AffectationFactory::new();
-    }
+    // protected static function newFactory(): AffectationFactory
+    // {
+    //     //return AffectationFactory::new();
+    // }
 
     public function enseignant()
     {

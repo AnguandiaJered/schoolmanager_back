@@ -7,6 +7,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Traits\JsonResponseTrait;
+use Modules\Bibliotheque\App\Models\EmpruntLivre;
+use Illuminate\Support\Facades\Auth;
 
 class EmpruntController extends Controller
 {
@@ -17,7 +19,8 @@ class EmpruntController extends Controller
      */
     public function index()
     {
-        return view('bibliotheque::index');
+        $emprunt = EmpruntLivre::with('eleve','livre','user')->paginate(5);
+        return $this->sendData($emprunt);
     }
 
     /**
@@ -31,9 +34,31 @@ class EmpruntController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'eleve_id'=>'required',
+            'livre_id'=>'required',
+            'dateretrait'=>'required',
+            'dateretour'=>'required',
+            'nombre'=>'required',
+        ]);
+
+        try {
+            $emprunt = new EmpruntLivre();
+
+            $emprunt->eleve_id=$request->input('eleve_id');
+            $emprunt->livre_id=$request->input('livre_id');
+            $emprunt->dateretrait=$request->input('dateretrait');
+            $emprunt->dateretour=$request->input('dateretour');
+            $emprunt->nombre=$request->input('nombre');
+            $emprunt->author = Auth::user()->id;
+            $emprunt->save();
+
+            return $this->sendResponse($emprunt, 'Enregistrement réussi');
+        } catch (\Exception $ex) {
+            return $this->sendErrorResponse('Echec d\'enregistrement',$ex->getMessage());
+        }
     }
 
     /**
@@ -41,7 +66,8 @@ class EmpruntController extends Controller
      */
     public function show($id)
     {
-        return view('bibliotheque::show');
+        $emprunt = EmpruntLivre::findOrFail($id);
+        return $this->sendData($emprunt);
     }
 
     /**
@@ -49,15 +75,38 @@ class EmpruntController extends Controller
      */
     public function edit($id)
     {
-        return view('bibliotheque::edit');
+        $emprunt = EmpruntLivre::findOrFail($id);
+        return $this->sendData($emprunt);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'eleve_id'=>'sometimes|integer',
+            'livre_id'=>'sometimes|integer',
+            'dateretrait'=>'sometimes|string',
+            'dateretour'=>'sometimes|string',
+            'nombre'=>'sometimes|integer',
+        ]);
+
+        try {
+            $emprunt = EmpruntLivre::findOrFail($id);
+
+            $emprunt->eleve_id=$request->input('eleve_id');
+            $emprunt->livre_id=$request->input('livre_id');
+            $emprunt->dateretrait=$request->input('dateretrait');
+            $emprunt->dateretour=$request->input('dateretour');
+            $emprunt->nombre=$request->input('nombre');
+            $emprunt->author = Auth::user()->id;
+            $emprunt->save();
+
+            return $this->sendResponse($emprunt, 'Modification réussi');
+        } catch (\Exception $ex) {
+            return $this->sendErrorResponse('Echec de modification',$ex->getMessage());
+        }
     }
 
     /**
@@ -65,6 +114,7 @@ class EmpruntController extends Controller
      */
     public function destroy($id)
     {
-        //
+        EmpruntLivre::find($id)->delete();
+        return $this->sendResponse('Suppression réussi');
     }
 }

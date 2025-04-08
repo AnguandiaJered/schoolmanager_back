@@ -17,8 +17,18 @@ class Livre extends Model
     // protected $fillable = [];
     protected $guarded = [];
 
-    protected static function newFactory(): LivreFactory
+    // protected static function newFactory(): LivreFactory
+    // {
+    //     //return LivreFactory::new();
+    // }
+
+    public function empruntlivre()
     {
-        //return LivreFactory::new();
+        return $this->hasMany(EmpruntLivre::class, 'livre_id','id');
+    }
+
+    public function remiselivre()
+    {
+        return $this->hasMany(RemiseLivre::class, 'livre_id','id');
     }
 }

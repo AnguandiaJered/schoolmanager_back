@@ -2,6 +2,7 @@
 
 namespace Modules\Bibliotheque\App\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Bibliotheque\Database\factories\RemiseLivreFactory;
@@ -17,8 +18,23 @@ class RemiseLivre extends Model
     // protected $fillable = [];
     protected $guarded = [];
 
-    protected static function newFactory(): RemiseLivreFactory
+    // protected static function newFactory(): RemiseLivreFactory
+    // {
+    //     //return RemiseLivreFactory::new();
+    // }
+
+    public function empruntlivre()
     {
-        //return RemiseLivreFactory::new();
+        return $this->belongsTo(EmpruntLivre::class,'emprunt_id','id');
+    }
+
+    public function livre()
+    {
+        return $this->belongsTo(Livre::class,'livre_id','id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'author','id');
     }
 }

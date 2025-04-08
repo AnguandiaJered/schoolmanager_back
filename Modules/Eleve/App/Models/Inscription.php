@@ -18,10 +18,10 @@ class Inscription extends Model
     // protected $fillable = [];
     protected $guarded = [];
 
-    protected static function newFactory(): InscriptionFactory
-    {
-        //return InscriptionFactory::new();
-    }
+    // protected static function newFactory(): InscriptionFactory
+    // {
+    //     //return InscriptionFactory::new();
+    // }
 
     public function eleve()
     {

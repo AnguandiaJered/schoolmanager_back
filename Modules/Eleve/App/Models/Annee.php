@@ -16,10 +16,10 @@ class Annee extends Model
      */
     protected $fillable = ['id','designation'];
 
-    protected static function newFactory(): AnneeFactory
-    {
-        //return AnneeFactory::new();
-    }
+    // protected static function newFactory(): AnneeFactory
+    // {
+    //     //return AnneeFactory::new();
+    // }
 
     public function inscription()
     {
