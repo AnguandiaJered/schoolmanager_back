@@ -16,8 +16,8 @@ class Discipline extends Model
     // protected $fillable = [];
     protected $guarded = [];
 
-    protected static function newFactory(): DisciplineFactory
-    {
-        //return DisciplineFactory::new();
-    }
+    // protected static function newFactory(): DisciplineFactory
+    // {
+    //     //return DisciplineFactory::new();
+    // }
 }

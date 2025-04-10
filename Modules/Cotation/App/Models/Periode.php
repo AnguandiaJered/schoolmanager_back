@@ -15,8 +15,8 @@ class Periode extends Model
      */
     protected $fillable = ['id','designation'];
 
-    protected static function newFactory(): PeriodeFactory
-    {
-        //return PeriodeFactory::new();
-    }
+    // protected static function newFactory(): PeriodeFactory
+    // {
+    //     //return PeriodeFactory::new();
+    // }
 }

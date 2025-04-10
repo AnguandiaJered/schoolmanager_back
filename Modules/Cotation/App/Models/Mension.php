@@ -16,8 +16,8 @@ class Mension extends Model
     // protected $fillable = [];
     protected $guarded = [];
 
-    protected static function newFactory(): MensionFactory
-    {
-        //return MensionFactory::new();
-    }
+    // protected static function newFactory(): MensionFactory
+    // {
+    //     //return MensionFactory::new();
+    // }
 }

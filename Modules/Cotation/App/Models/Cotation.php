@@ -17,8 +17,8 @@ class Cotation extends Model
     // protected $fillable = [];
     protected $guarded = [];
 
-    protected static function newFactory(): CotationFactory
-    {
-        //return CotationFactory::new();
-    }
+    // protected static function newFactory(): CotationFactory
+    // {
+    //     //return CotationFactory::new();
+    // }
 }

@@ -15,8 +15,8 @@ class Cours extends Model
      */
     protected $fillable = ['id','designation'];
 
-    protected static function newFactory(): CoursFactory
-    {
-        //return CoursFactory::new();
-    }
+    // protected static function newFactory(): CoursFactory
+    // {
+    //     //return CoursFactory::new();
+    // }
 }
