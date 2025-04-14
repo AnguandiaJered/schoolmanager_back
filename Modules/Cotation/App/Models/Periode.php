@@ -19,4 +19,14 @@ class Periode extends Model
     // {
     //     //return PeriodeFactory::new();
     // }
+
+    public function cotation()
+    {
+        return $this->hasMany(Periode::class, 'period_id','id');
+    }
+
+    public function discipline()
+    {
+        return $this->hasMany(Periode::class, 'period_id','id');
+    }
 }

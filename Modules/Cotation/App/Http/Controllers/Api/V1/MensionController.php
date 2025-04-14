@@ -6,15 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Traits\JsonResponseTrait;
+use Modules\Cotation\App\Models\Mension;
 
 class MensionController extends Controller
 {
+    use JsonResponseTrait;
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('cotation::index');
+        $mension = Mension::latest()->get();
+        return $this->sendData($mension);
     }
 
     /**
@@ -28,9 +33,22 @@ class MensionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'designation' => 'required'
+        ]);
+
+       try {
+            $mension = new Mension();
+
+            $mension->designation = $request->input('designation');
+            $mension->save();
+
+            return $this->sendResponse($mension, 'Enregistrement réussi');
+        } catch (\Exception $ex) {
+            return $this->sendErrorResponse('Echec d\'enregistrement',$ex->getMessage());
+        }
     }
 
     /**
@@ -38,7 +56,8 @@ class MensionController extends Controller
      */
     public function show($id)
     {
-        return view('cotation::show');
+        $mension = Mension::findOrFail($id);
+        return $this->sendData($mension);
     }
 
     /**
@@ -46,15 +65,29 @@ class MensionController extends Controller
      */
     public function edit($id)
     {
-        return view('cotation::edit');
+        $mension = Mension::findOrFail($id);
+        return $this->sendData($mension);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'designation' => 'sometimes|string'
+        ]);
+
+       try {
+            $mension = Mension::findOrFail($id);
+
+            $mension->designation = $request->input('designation');
+            $mension->save();
+
+            return $this->sendResponse($mension, 'Modification réussi');
+        } catch (\Exception $ex) {
+            return $this->sendErrorResponse('Echec de modification',$ex->getMessage());
+        }
     }
 
     /**
@@ -62,6 +95,7 @@ class MensionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Mension::find($id)->delete();
+        return $this->sendResponse('Suppression réussi');
     }
 }

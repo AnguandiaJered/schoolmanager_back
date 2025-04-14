@@ -20,4 +20,9 @@ class Mension extends Model
     // {
     //     //return MensionFactory::new();
     // }
+
+    public function discipline()
+    {
+        return $this->hasMany(Mension::class, 'mention_id','id');
+    }
 }
