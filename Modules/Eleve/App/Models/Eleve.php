@@ -8,6 +8,7 @@ use Modules\Eleve\Database\factories\EleveFactory;
 use Modules\Bibliotheque\App\Models\EmpruntLivre;
 use Modules\Cotation\App\Models\Cotation;
 use Modules\Cotation\App\Models\Discipline;
+use Modules\Frais\App\Models\Paiement;
 
 class Eleve extends Model
 {
@@ -42,5 +43,10 @@ class Eleve extends Model
     public function discipline()
     {
         return $this->hasMany(Discipline::class, 'eleve_id','id');
+    }
+
+    public function paiement()
+    {
+        return $this->hasMany(Paiement::class, 'eleve_id','id');
     }
 }

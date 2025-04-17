@@ -5,6 +5,7 @@ namespace Modules\Eleve\App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Eleve\Database\factories\ClasseFactory;
+use Modules\Frais\App\Models\Prevision;
 use Modules\Personnel\App\Models\Affectation;
 
 class Classe extends Model
@@ -29,5 +30,10 @@ class Classe extends Model
     public function affectation()
     {
         return $this->hasMany(Affectation::class, 'classe_id','id');
+    }
+
+    public function prevision()
+    {
+        return $this->hasMany(Prevision::class, 'classe_id','id');
     }
 }

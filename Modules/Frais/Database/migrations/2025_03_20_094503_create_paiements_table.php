@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->float('montant');
             $table->string('libelle');
-            $table->datetimes('datepaie');
             $table->unsignedBigInteger('eleve_id');
             $table->unsignedBigInteger('frais_id');
             $table->unsignedBigInteger('author');

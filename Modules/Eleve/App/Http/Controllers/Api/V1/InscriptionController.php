@@ -45,12 +45,12 @@ class InscriptionController extends Controller
 
         try {
             $inscription = new Inscription();
+
             $inscription->eleve_id = $request->input('eleve_id');
             $inscription->classe_id = $request->input('classe_id');
             $inscription->annee_id = $request->input('annee_id');
             $inscription->paiement_id = $request->input('paiement_id');
             $inscription->author = Auth::user()->id;
-
             $inscription->save();
 
             return $this->sendResponse($inscription, 'Enregistrement réussi');
@@ -98,7 +98,6 @@ class InscriptionController extends Controller
             $inscription->annee_id = $request->input('annee_id');
             $inscription->paiement_id = $request->input('paiement_id');
             $inscription->author = Auth::user()->id;
-
             $inscription->save();
 
             return $this->sendResponse($inscription, 'Modification réussi');
