@@ -20,7 +20,7 @@ class Cours extends Model
     //     //return CoursFactory::new();
     // }
 
-    public function cours()
+    public function cotation()
     {
         return $this->hasMany(Cotation::class, 'cours_id','id');
     }

@@ -19,7 +19,7 @@ class CoteController extends Controller
      */
     public function index()
     {
-        $cotation = Cotation::with('eleve','period','cours','user')->paginate(5);
+        $cotation = Cotation::with('eleve','period','cours','author')->paginate(5);
         return $this->sendData($cotation);
     }
 
@@ -45,7 +45,7 @@ class CoteController extends Controller
 
         try {
             $cotation = new Cotation();
-        
+
             $cotation->eleve_id = $request->input('eleve_id');
             $cotation->period_id = $request->input('period_id');
             $cotation->cours_id = $request->input('cours_id');
@@ -91,7 +91,7 @@ class CoteController extends Controller
 
         try {
             $cotation = Cotation::findOrFail($id);
-        
+
             $cotation->eleve_id = $request->input('eleve_id');
             $cotation->period_id = $request->input('period_id');
             $cotation->cours_id = $request->input('cours_id');

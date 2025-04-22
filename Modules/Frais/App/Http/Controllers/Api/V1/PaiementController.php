@@ -19,7 +19,7 @@ class PaiementController extends Controller
      */
     public function index()
     {
-        $paiement = Paiement::with('eleve','frais','user')->paginate(5);
+        $paiement = Paiement::with('eleve','frais','author')->paginate(5);
         return $this->sendData($paiement);
     }
 

@@ -40,7 +40,7 @@ class Paiement extends Model
         return $this->belongsTo(Frais::class,'frais_id','id');
     }
 
-    public function user()
+    public function author()
     {
         return $this->belongsTo(User::class,'author','id');
     }

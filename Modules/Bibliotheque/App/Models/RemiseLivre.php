@@ -33,7 +33,7 @@ class RemiseLivre extends Model
         return $this->belongsTo(Livre::class,'livre_id','id');
     }
 
-    public function user()
+    public function author()
     {
         return $this->belongsTo(User::class,'author','id');
     }

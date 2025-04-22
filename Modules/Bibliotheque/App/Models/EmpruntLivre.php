@@ -34,12 +34,12 @@ class EmpruntLivre extends Model
         return $this->belongsTo(Livre::class,'livre_id','id');
     }
 
-    public function user()
+    public function author()
     {
         return $this->belongsTo(User::class,'author','id');
     }
 
-    public function empruntlivre()
+    public function remiselivre()
     {
         return $this->hasMany(RemiseLivre::class, 'emprunt_id','id');
     }

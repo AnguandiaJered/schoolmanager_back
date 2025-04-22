@@ -19,7 +19,7 @@ class DisciplineController extends Controller
      */
     public function index()
     {
-        $discipline = Discipline::with('eleve','period','mention','user')->paginate(5);
+        $discipline = Discipline::with('eleve','period','mention','author')->paginate(5);
         return $this->sendData($discipline);
     }
 

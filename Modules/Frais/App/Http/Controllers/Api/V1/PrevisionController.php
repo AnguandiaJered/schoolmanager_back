@@ -19,7 +19,7 @@ class PrevisionController extends Controller
      */
     public function index()
     {
-        $prevision = Prevision::with('annee','classe','frais','user')->paginate(5);
+        $prevision = Prevision::with('annee','classe','frais','author')->paginate(5);
         return $this->sendData($prevision);
     }
 

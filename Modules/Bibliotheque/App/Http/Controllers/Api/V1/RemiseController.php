@@ -19,7 +19,7 @@ class RemiseController extends Controller
      */
     public function index()
     {
-        $remise = RemiseLivre::with('empruntlivre','livre','user')->paginate(5);
+        $remise = RemiseLivre::with('empruntlivre','livre','author')->paginate(5);
         return $this->sendData($remise);
     }
 

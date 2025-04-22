@@ -38,7 +38,7 @@ class Discipline extends Model
         return $this->belongsTo(Mension::class,'mention_id','id');
     }
 
-    public function user()
+    public function author()
     {
         return $this->belongsTo(User::class,'author','id');
     }

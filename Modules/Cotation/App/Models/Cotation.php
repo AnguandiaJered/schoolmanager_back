@@ -39,7 +39,7 @@ class Cotation extends Model
         return $this->belongsTo(Cours::class,'cours_id','id');
     }
 
-    public function user()
+    public function author()
     {
         return $this->belongsTo(User::class,'author','id');
     }

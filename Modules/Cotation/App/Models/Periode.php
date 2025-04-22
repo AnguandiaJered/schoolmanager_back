@@ -22,11 +22,11 @@ class Periode extends Model
 
     public function cotation()
     {
-        return $this->hasMany(Periode::class, 'period_id','id');
+        return $this->hasMany(Cotation::class, 'period_id','id');
     }
 
     public function discipline()
     {
-        return $this->hasMany(Periode::class, 'period_id','id');
+        return $this->hasMany(Discipline::class, 'period_id','id');
     }
 }

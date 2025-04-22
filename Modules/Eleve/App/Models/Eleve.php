@@ -9,6 +9,7 @@ use Modules\Bibliotheque\App\Models\EmpruntLivre;
 use Modules\Cotation\App\Models\Cotation;
 use Modules\Cotation\App\Models\Discipline;
 use Modules\Frais\App\Models\Paiement;
+use Modules\Presence\App\Models\Presence;
 
 class Eleve extends Model
 {
@@ -48,5 +49,10 @@ class Eleve extends Model
     public function paiement()
     {
         return $this->hasMany(Paiement::class, 'eleve_id','id');
+    }
+
+    public function presence()
+    {
+        return $this->hasMany(Presence::class, 'eleve_id','id');
     }
 }

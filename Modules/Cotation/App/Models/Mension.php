@@ -23,6 +23,6 @@ class Mension extends Model
 
     public function discipline()
     {
-        return $this->hasMany(Mension::class, 'mention_id','id');
+        return $this->hasMany(Discipline::class, 'mention_id','id');
     }
 }

@@ -19,7 +19,7 @@ class EmpruntController extends Controller
      */
     public function index()
     {
-        $emprunt = EmpruntLivre::with('eleve','livre','user')->paginate(5);
+        $emprunt = EmpruntLivre::with('eleve','livre','author')->paginate(5);
         return $this->sendData($emprunt);
     }
 
