@@ -19,7 +19,7 @@ use Modules\Auth\App\Http\Controllers\Api\V1\{ LoginController, ResetController,
 //     Route::get('auth', fn (Request $request) => $request->user())->name('auth');
 // });
 
-Route::group(['as' => 'schoolmanager::api.', 'prefix' => 'auth'], function () {
+Route::group(['as' => 'shule::api.', 'prefix' => 'auth'], function () {
 
     Route::post('login', [LoginController::class, 'login'])->name('login');
 
